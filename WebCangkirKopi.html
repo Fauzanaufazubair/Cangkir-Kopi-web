@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: hwb(40 0% 97%);
+        }
+
+        header {
+            text-align: center;
+            background-color: hwb(40 0% 99%);
+            padding: 20px;
+        }
+
+        header .header-image {
+            width: 100%;
+            height: auto;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            background-color: #040210;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: rgb(20, 2, 2);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            background-color: #ad691c;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: #ff6f61;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #815829;
+            min-width: 160px;
+            z-index: 1;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown-content a {
+            color: rgb(1, 6, 7);
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ff6f61;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Menu Section Style */
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 8px;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+        }
+
+        .menu-items {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .item {
+            text-align: center;
+            width: 200px;
+            margin: 10px;
+        }
+
+        .item img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .price-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .price {
+            font-size: 1.1em;
+            margin: 5px 0;
+            color: #744605;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .menu-button {
+            cursor: pointer;
+            font-size: 1.2em;
+            background-color: #bc7a51fb;
+            color: rgb(24, 21, 21);
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+        .menu-button:hover {
+            background-color: #ff6f61;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <img src="images/header/Header.jpg" alt="Coffee Shop Header" class="header-image">
+        <nav>
+            <ul>
+                <li><a href="javascript:void(0)" onclick="toggleMenu('home')">Home</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)">Menu</a>
+                    <div class="dropdown-content">
+                        <a href="javascript:void(0)" onclick="toggleMenu('drinksMenu')">Drinks</a>
+                        <a href="javascript:void(0)" onclick="toggleMenu('maincourseMenu')">Main Course</a>
+                        <a href="javascript:void(0)" onclick="toggleMenu('snacksMenu')">Snacks</a>
+                    </div>
+                </li>
+                <li><a href="javascript:void(0)" onclick="toggleMenu('info')">Info</a></li>
+                <li><a href="javascript:void(0)" onclick="toggleMenu('contact')">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <h1>Welcome to Cangkir Kopi!</h1>
+        <p>Discover our best-selling items and exciting events happening right now.</p>
+
+        <h2>Best Seller</h2>
+        <div class="menu-items">
+            <div class="item">
+                <img src="images/drink/milodino.jpg" alt="Best Seller 1">
+                <h4>Milo Dinosaur</h4>
+                <p>A rich and aromatic coffee.</p>
+
+            </div>
+            <div class="item">
+                <img src="images/best-seller-2.jpg" alt="Best Seller 2">
+                <h4>Caramel Latte</h4>
+                <p>Espresso with smooth caramel.</p>
+                <div class="price">$4.00</div>
+            </div>
+        </div>
+
+        <h2>Event at Our Coffee Shop</h2>
+        <img src="images/header/Event.jpg" alt="Event Image" class="header-image">
+        <p>Join us for a live music night! Enjoy great coffee and live performances at our cozy coffee shop.</p>
+                <!-- Promo Section -->
+                <div class="promo-info">
+                    <h3>Promooo!!</h3>
+                    <img src="images/header/Event.jpg" alt="Promo">
+                </div>
+    </section>
+
+    <!-- Drinks Menu -->
+    <section id="drinksMenu" class="hidden">
+        <h2>Our Drinks</h2>
+        <!-- Milo Dinosaur -->
+        <div class="menu-items">
+            <div class="item">
+                <img src="images/drink/milodino.jpg" alt="Coffee 1">
+                <h4>Milo Dinosaur</h4>
+                <div class="price-container">
+                    <span class="price">Ice: Rp 25.000</span>
+                </div>
+            </div>
+            <!-- Americano -->
+            <div class="item">
+                <img src="images/drink/american.jpg" alt="Coffee 1">
+                <h4>Americano</h4>
+                <div class="price-container">
+                    <span class="price">Ice: Rp 25.000</span>
+                </div>
+            </div>
+            <!-- Caramel Latte -->
+            <div class="item">
+                <img src="images/drink/karamellate.jpg" alt="Coffee 1">
+                <h4>Caramel Latte</h4>
+                <div class="price-container">
+                    <span class="price">Ice: Rp 25.000</span>
+                </div>
+            </div>
+            <!-- Cafe Latte -->
+            <div class="item">
+                <img src="images/drink/kafelatttee.jpeg" alt="Coffee 1">
+                <h4>Caffe Latte</h4>
+                <div class="price-container">
+                    <span class="price">Ice: Rp 25.000</span>
+                </div>
+            </div>
+            <!-- Espresso -->
+            <div class="item">
+                <img src="images/drink/espreso.jpeg" alt="Coffee 1">
+                <h4>Esspresso</h4>
+                <div class="price-container">
+                    <span class="price">Hot: Rp 25.000</span>
+                </div>
+            </div>
+            <!-- Cappucino -->
+            <div class="item">
+                <img src="images/drink/kapucino.jpg" alt="Coffee 1">
+                <h4>Cappucino</h4>
+                <div class="price-container">
+                    <span class="price">Hot: Rp 25.000</span>
+                    <span class="price">Ice: Rp 25.000</span>
+                </div>
+            </div>
+            <!-- Cappucino -->
+            <div class="item">
+                <img src="images/drink/CH.jpg" alt="Coffee 1">
+                <h4>Choco Hazelnut</h4>
+                <div class="price-container">
+                    <span class="price">Hot: Rp 25.000</span>
+                    <span class="price">Ice: Rp 25.000</span>
+                </div>
+            </div><!-- Cappucino -->
+            <div class="item">
+                <img src="images/drink/ML.jpg" alt="Coffee 1">
+                <h4>Matcha</h4>
+                <div class="price-container">
+                    <span class="price">Hot: Rp 25.000</span>
+                    <span class="price">Ice: Rp 25.000</span>
+                </div>
+            </div><!-- Cappucino -->
+            <div class="item">
+                <img src="images/drink/VL.jpg" alt="Coffee 1">
+                <h4>Vanilla Latte</h4>
+                <div class="price-container">
+                    <span class="price">Hot: Rp 25.000</span>
+                    <span class="price">Ice: Rp 25.000</span>
+                </div>
+            </div><!-- Cappucino -->
+            <div class="item">
+                <img src="images/drink/RKM.jpg" alt="Coffee 1">
+                <h4>Regal Caramel Milk</h4>
+                <div class="price-container">
+                    <span class="price">Hot: Rp 25.000</span>
+                    <span class="price">Ice: Rp 25.000</span>
+                </div>
+            </div><!-- Cappucino -->
+            <div class="item">
+                <img src="images/drink/CC.jpg" alt="Coffee 1">
+                <h4>Chocolate</h4>
+                <div class="price-container">
+                    <span class="price">Hot: Rp 25.000</span>
+                    <span class="price">Ice: Rp 25.000</span>
+                </div>
+            </div>
+            <!-- Cappucino -->
+            <div class="item">
+                <img src="images/drink/RV.jpg" alt="Coffee 1">
+                <h4>Red Velvet</h4>
+                <div class="price-container">
+                    <span class="price">Hot: Rp 25.000</span>
+                    <span class="price">Ice: Rp 25.000</span>
+                </div>
+            </div><!-- Cappucino -->
+            <div class="item">
+                <img src="images/drink/AL.jpg" alt="Coffee 1">
+                <h4>Avocado Latte</h4>
+                <div class="price-container">
+                    <span class="price">Hot: Rp 25.000</span>
+                    <span class="price">Ice: Rp 25.000</span>
+                </div>
+            </div><!-- Cappucino -->
+            <div class="item">
+                <img src="images/drink/LY.jpg" alt="Coffee 1">
+                <h4>Lychee Yakult</h4>
+                <div class="price-container">
+                    <span class="price">Hot: Rp 25.000</span>
+                    <span class="price">Ice: Rp 25.000</span>
+                </div>
+            </div>
+            <!-- Milo Dinosaur -->
+            <div class="item">
+                <img src="images/drink/OY.jpg" alt="Coffee 2">
+                <h4>Orange Yakult</h4>
+                <div class="price-container">
+                    <span class="price">Hot: $4.00</span>
+                    <span class="price">Ice: $4.20</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Food Menu -->
+    <section id="maincourseMenu" class="hidden">
+        <h2>Main Course</h2>
+        <div class="menu-items">
+            <div class="item">
+                <img src="images/food/NG.jpg" alt="Food 1">
+                <h4>Nasi Goreng</h4>
+                <div class="price">$5.50</div>
+            </div>
+            <div class="item">
+                <img src="images/food/SCN.jpg" alt="Food 1">
+                <h4>Spaghetti Carbonara</h4>
+                <div class="price">$5.50</div>
+            </div>
+            <div class="item">
+                <img src="images/food/SONL.jpg" alt="Food 1">
+                <h4>Spaghetti Aglio e Olio</h4>
+                <div class="price">$5.50</div>
+            </div>
+            <div class="item">
+                <img src="images/food/SBL.jpg" alt="Food 1">
+                <h4>Spaghetti Bolognese</h4>
+                <div class="price">$5.50</div>
+            </div>
+            <div class="item">
+                <img src="images/food/MG.jpg" alt="Food 1">
+                <h4>Mie Goreng</h4>
+                <div class="price">$5.50</div>
+            </div>
+            <div class="item">
+                <img src="images/food/RBCK.jpg" alt="Food 1">
+                <h4>Rice Bowl Chicken Katsu</h4>
+                <div class="price">$5.50</div>
+            </div>
+            <div class="item">
+                <img src="images/food/RBSM.jpg" alt="Food 1">
+                <h4>Rice Bowl Ayam Sambal Matah</h4>
+                <div class="price">$5.50</div>
+            </div>
+            <div class="item">
+                <img src="images/food/RCT.jpg" alt="Food 2">
+                <h4>Rice Bowl Chicken Teriyaki</h4>
+                <div class="price">$6.00</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Snacks Menu -->
+    <section id="snacksMenu" class="hidden">
+        <h2>Snacks</h2>
+        <div class="menu-items">
+            <div class="item">
+                <img src="images/snack/FF.jpg" alt="Snack 1">
+                <h4>Kentang Goreng</h4>
+                <div class="price">$2.50</div>
+            </div>
+            <div class="item">
+                <img src="images/snack/ST.jpg" alt="Snack 2">
+                <h4>Sate Taichan</h4>
+                <div class="price">$2.00</div>
+            </div>
+            <div class="item">
+                <img src="images/snack/PB.jpg" alt="Snack 1">
+                <h4>Pisang Bakar</h4>
+                <div class="price">$2.50</div>
+            </div>
+            <div class="item">
+                <img src="images/snack/CSR.jpg" alt="Snack 2">
+                <h4>Cireng</h4>
+                <div class="price">$2.00</div>
+            </div>
+            <div class="item">
+                <img src="images/snack/BG.jpg" alt="Snack 1">
+                <h4>Burger Cheese</h4>
+                <div class="price">$2.50</div>
+            </div>
+            <div class="item">
+                <img src="images/snack/RB.jpg" alt="Snack 1">
+                <h4>Roti Bakar</h4>
+                <div class="price">$2.50</div>
+            </div>
+            <div class="item">
+                <img src="images/snack/SW.jpg" alt="Snack 2">
+                <h4>Sandwich</h4>
+                <div class="price">$2.00</div>
+            </div>
+            <div class="item">
+                <img src="images/snack/MP.jpg" alt="Snack 2">
+                <h4>Mix Platter</h4>
+                <div class="price">$2.00</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section id="info" class="hidden">
+        <h2>About Our Coffee Shop</h2>
+        <p>We offer premium coffee and delicious food in a cozy environment. Visit us for a great experience!</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="hidden">
+        <h2>Contact Us</h2>
+        <p>Email: contact@coffeeshop.com</p>
+        <p>Phone: +123 456 789</p>
+        <p>Address: 123 Coffee Street, Coffee City</p>
+    </section>
+
+    <script>
+        function toggleMenu(menuId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(function(section) {
+                section.classList.add('hidden');
+            });
+
+            const selectedMenu = document.getElementById(menuId);
+            if (selectedMenu) {
+                selectedMenu.classList.remove('hidden');
+            }
+        }
+
+        // Display home page by default when the website is opened
+        toggleMenu('home');
+    </script>
+
+</body>
+</html>
+
